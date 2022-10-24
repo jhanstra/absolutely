@@ -25,13 +25,16 @@ class FormatActions {
                 folderPath = f.uri.path;
         });
         const file = document.getText();
+        const importRegex = new RegExp(`import (.*){(.*)} from ['"]([^.].*)['"]`);
+        const imports = file === null || file === void 0 ? void 0 : file.split('\n').filter(line => line.match(importRegex)).join('\n');
+        const fileBody = file === null || file === void 0 ? void 0 : file.split('\n').filter(line => !line.match(importRegex)).join('\n');
         let config = {};
         vscode.workspace.openTextDocument(`${folderPath}/absolutely.json`).then((document) => {
             config = JSON.parse(document.getText());
             const relevant = {};
             Object.entries(config).forEach(([library, arrOfImports]) => {
                 arrOfImports.forEach((mod) => {
-                    if (file.includes(mod)) {
+                    if (fileBody.includes(mod) && !imports.includes(mod)) {
                         if (!relevant[library])
                             relevant[library] = [];
                         relevant[library].push(mod);

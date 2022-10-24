@@ -31,6 +31,10 @@ export class FormatActions implements vscode.CodeActionProvider {
       if (currentDocPath.includes(f.uri.path)) folderPath = f.uri.path
     })
     const file = document.getText()
+    const importRegex = new RegExp(`import (.*){(.*)} from ['"]([^.].*)['"]`)
+
+    const imports = file?.split('\n').filter(line => line.match(importRegex)).join('\n')
+    const fileBody = file?.split('\n').filter(line => !line.match(importRegex)).join('\n')
 
     let config: Object = {}
     vscode.workspace.openTextDocument(`${folderPath}/absolutely.json`).then((document) => {
@@ -38,7 +42,7 @@ export class FormatActions implements vscode.CodeActionProvider {
       const relevant: Object = {}
       Object.entries(config).forEach(([library, arrOfImports]: [string, string[]]) => {
         arrOfImports.forEach((mod: string) => {
-          if (file.includes(mod)) {
+          if (fileBody.includes(mod) && !imports.includes(mod)) {
             if (!relevant[library]) relevant[library] = []
             relevant[library].push(mod)
           }
