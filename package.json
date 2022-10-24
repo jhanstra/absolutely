@@ -2,7 +2,7 @@
   "name": "absolutely",
   "displayName": "absolutely",
   "description": "Import things automagically",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "coprime",
   "engines": {
     "vscode": "^1.72.0"
