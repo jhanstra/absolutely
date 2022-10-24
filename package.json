@@ -16,7 +16,8 @@
     "Formatters"
   ],
   "activationEvents": [
-    "*"
+      "onLanguage:javascript",
+      "onLanguage:typescript"
   ],
   "main": "./out/extension.js",
   "contributes": {
