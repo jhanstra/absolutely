@@ -7,23 +7,25 @@
     "vscode": "^1.72.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Formatters"
   ],
   "activationEvents": [
     "*"
   ],
-  "main": "./extension.js",
+  "main": "./out/extension.js",
   "contributes": {
     "commands": [{
-      "command": "absolutely.run",
+      "command": "editor.action.absolutely",
       "title": "Absolutely"
     }]
   },
   "scripts": {
-    "lint": "eslint .",
-    "pretest": "pnpm run lint",
-    "test": "node ./test/runTest.js"
-  },
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "tslint -p ./",
+		"dev": "tsc -watch -p ./"
+	},
   "devDependencies": {
     "@types/vscode": "^1.72.0",
     "@types/glob": "^8.0.0",
