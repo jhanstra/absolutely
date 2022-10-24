@@ -8,8 +8,6 @@ Write your code, hit save, and the common imports you've specified in your `abso
 
 ![Absolutely in action](./in-action.gif))
 
-# <img src="./in-action.gif" width="100%" />
-
 ## Set-up
 
 1. Edit your VSCode settings with the `editor.codeActionsOnSave` property. Give it an array of actions to perform, and place Absolutely first. You probably only want to perform these actions in Javascript files to make sure it doesn't write in other file types.
