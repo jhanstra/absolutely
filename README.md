@@ -1,20 +1,52 @@
-# absolutely README
+# <img src="./absolutely.png" width="40" /> Absolutely
 
-This is the README for your extension "absolutely". After writing up a brief description, we recommend including the following sections.
+**Absolutely writes absolute imports for you so don't have to. Never type out `import { useState } from 'react'` again!**
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Write your code, hit save, and the common imports you've specified in your `absolutely.json` file will be automagically added as imports to the top of the file!
 
-For example if there is an image subfolder under your extension project workspace:
+<img src="https://share.cleanshot.com/5frLi7" width="100%" />
 
-\!\[feature X\]\(images/feature-x.png\)
+## Set-up
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. Edit your VSCode settings with the `editor.codeActionsOnSave` property. Give it an array of actions to perform, and place Absolutely first. You probably only want to perform these actions in Javascript files to make sure it doesn't write in other file types.
 
-## Requirements
+```settings.json
+"[javascript]": {
+  "editor.codeActionsOnSave": [
+    "source.absolutely",
+    "source.organizeImports",
+    "source.fixAll.eslint"
+  ]
+},
+"[typescript]": {
+  "editor.codeActionsOnSave": [
+    "source.absolutely",
+    "source.organizeImports",
+    "source.fixAll.eslint"
+  ]
+}
+```
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+2. Create an `absolutely.json` file in the root of your project. This JSON object should have keys of the common libraries you want to import from, and values of an array of the items from that library you want to watch for.
+
+**Example:**
+
+```absolutely.json
+{
+  "react": ["useState", "useEffect", "useCallback", "useRef"],
+  "react-hook-form": ["useForm", "Controller"],
+  "next/router": ["useRouter"],
+  "components": ["Button", "Icon", "Box", "Input"],
+}
+```
+
+## Limitations
+
+Absolutely only works for a niche use-case: you import _everything_ as named imports from an _absolute_ destination. It does not work with default exports or any relative paths.
+
+Additionally, it really only works well in conjunction with the ESLint plugin [`unused-imports`](https://www.npmjs.com/package/eslint-plugin-unused-imports). If you don't have this in your workflow, Absolutely will stupidly add duplicate imports. All Absolutely is doing is searching for the keywords you've specified in `absolutely.json`, and adding them as import statements to the top of the file. ESLint can then come in and remove duplicates and clean it up.
 
 ## Extension Settings
 
@@ -24,42 +56,9 @@ For example:
 
 This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- `editorcodeActionsOnSave`: Enable/disable this extension.
+- `myExtension.thing`: Set to `blah` to do something.
 
-## Known Issues
+```
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+```
