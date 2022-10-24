@@ -3,9 +3,14 @@
   "displayName": "absolutely",
   "description": "Import things automagically",
   "version": "0.0.1",
+  "publisher": "coprime",
   "engines": {
     "vscode": "^1.72.0"
   },
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/jhanstra/absolutely"
+	},
   "categories": [
     "Other",
     "Formatters"

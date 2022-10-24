@@ -6,7 +6,7 @@
 
 Write your code, hit save, and the common imports you've specified in your `absolutely.json` file will be automagically added as imports to the top of the file!
 
-![Absolutely in action](./in-action.gif))
+![Absolutely in action](./in-action.gif)
 
 ## Set-up
 
