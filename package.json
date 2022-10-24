@@ -2,35 +2,37 @@
   "name": "absolutely",
   "displayName": "absolutely",
   "description": "Import things automagically",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "coprime",
   "engines": {
     "vscode": "^1.72.0"
   },
   "repository": {
-		"type": "git",
-		"url": "https://github.com/jhanstra/absolutely"
-	},
+    "type": "git",
+    "url": "https://github.com/jhanstra/absolutely"
+  },
   "categories": [
     "Other",
     "Formatters"
   ],
   "activationEvents": [
-      "onLanguage:javascript",
-      "onLanguage:typescript"
+    "onLanguage:javascript",
+    "onLanguage:typescript"
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [{
-      "command": "editor.action.absolutely",
-      "title": "Absolutely"
-    }]
+    "commands": [
+      {
+        "command": "editor.action.absolutely",
+        "title": "Absolutely"
+      }
+    ]
   },
   "scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"dev": "tsc -watch -p ./"
-	},
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "dev": "tsc -watch -p ./"
+  },
   "devDependencies": {
     "@types/vscode": "^1.72.0",
     "@types/glob": "^8.0.0",
