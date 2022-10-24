@@ -6,7 +6,9 @@
 
 Write your code, hit save, and the common imports you've specified in your `absolutely.json` file will be automagically added as imports to the top of the file!
 
-![Absolutely in action](https://share.cleanshot.com/5frLi7)
+![Absolutely in action](./in-action.gif))
+
+# <img src="./in-action.gif" width="100%" />
 
 ## Set-up
 
@@ -47,18 +49,3 @@ Write your code, hit save, and the common imports you've specified in your `abso
 Absolutely only works for a niche use-case: you import _everything_ as named imports from an _absolute_ destination. It does not work with default exports or any relative paths.
 
 Additionally, it really only works well in conjunction with the ESLint plugin [`unused-imports`](https://www.npmjs.com/package/eslint-plugin-unused-imports). If you don't have this in your workflow, Absolutely will stupidly add duplicate imports. All Absolutely is doing is searching for the keywords you've specified in `absolutely.json`, and adding them as import statements to the top of the file. ESLint can then come in and remove duplicates and clean it up.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-- `editorcodeActionsOnSave`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
-
-```
-
-```
