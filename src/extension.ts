@@ -36,13 +36,15 @@ export class FormatActions implements vscode.CodeActionProvider {
     const imports = file?.split('\n').filter(line => line.match(importRegex)).join('\n')
     const fileBody = file?.split('\n').filter(line => !line.match(importRegex)).join('\n')
 
+    if (file.includes('absolutely-not')) return
+
     let config: Object = {}
     vscode.workspace.openTextDocument(`${folderPath}/absolutely.json`).then((document) => {
       config = JSON.parse(document.getText());
       const relevant: Object = {}
       Object.entries(config).forEach(([library, arrOfImports]: [string, string[]]) => {
         arrOfImports.forEach((mod: string) => {
-          if (fileBody.includes(mod) && !imports.includes(mod)) {
+          if (fileBody.includes(mod) && !fileBody.includes(`const ${mod}`) && !fileBody.includes(`let ${mod}`) && !fileBody.includes(`var ${mod}`) && !imports.includes(mod)) {
             if (!relevant[library]) relevant[library] = []
             relevant[library].push(mod)
           }
