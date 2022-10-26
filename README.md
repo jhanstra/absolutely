@@ -1,4 +1,4 @@
-# <img src="./absolutely.png" width="40" /> Absolutely
+# <img src="./media/absolutely.png" width="40" /> Absolutely
 
 **Absolutely writes absolute imports for you so don't have to. Never type out `import { useState } from 'react'` again!**
 
@@ -6,7 +6,7 @@
 
 Write your code, hit save, and the common imports you've specified in your `absolutely.json` file will be automagically added as imports to the top of the file!
 
-![Absolutely in action](https://share.cleanshot.com/d3vYAU)
+![Absolutely in action](media/example.mp4)
 
 ## Set-up
 
