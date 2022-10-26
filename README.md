@@ -6,7 +6,7 @@
 
 Write your code, hit save, and the common imports you've specified in your `absolutely.json` file will be automagically added as imports to the top of the file!
 
-![Absolutely in action](media/example.mp4)
+https://user-images.githubusercontent.com/1919535/197928536-144e0da8-afc0-4e49-ba8d-dfa8eb8dc5ac.mp4
 
 ## Set-up
 
